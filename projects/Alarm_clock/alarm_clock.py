@@ -1,17 +1,22 @@
-# alarm_clock.py
-
 from tkinter import *
 import datetime
 import time
-import winsound
+import sys
 from threading import Thread
+
+# Conditionally import winsound
+if sys.platform == "win32":
+    import winsound
+else:
+    winsound = None
 
 def alarm_logic(set_alarm_time, play_sound_function):
     """Alarm logic separated from GUI code."""
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
         if current_time == set_alarm_time:
-            play_sound_function("sound.wav", winsound.SND_ASYNC)
+            if play_sound_function:
+                play_sound_function("sound.wav", winsound.SND_ASYNC)
             break
         time.sleep(1)
 
@@ -25,7 +30,8 @@ def create_gui():
 
     def start_alarm_thread():
         set_alarm_time = f"{hour.get()}:{minute.get()}:{second.get()}"
-        alarm_thread = Thread(target=alarm_logic, args=(set_alarm_time, winsound.PlaySound))
+        play_sound_function = winsound.PlaySound if winsound else None
+        alarm_thread = Thread(target=alarm_logic, args=(set_alarm_time, play_sound_function))
         alarm_thread.start()
 
     Label(root, text="Alarm Clock", font=("Helvetica 20 bold"), fg="red").pack(pady=10)

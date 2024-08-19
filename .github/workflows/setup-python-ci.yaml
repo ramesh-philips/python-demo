@@ -72,6 +72,10 @@ jobs:
         coverage run -m pytest --maxfail=1 --disable-warnings -q
         coverage xml
 
+    - name: Ensure docs directory exists
+      run: |
+        mkdir -p projects/Calculate_age/docs
+
     - name: Build documentation
       working-directory: projects/Calculate_age/docs  # Set the working directory
       run: |

@@ -50,12 +50,12 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest || true
+        pytest --maxfail=1 --disable-warnings -q || true
 
     - name: Generate coverage report
       run: |
         pip install coverage
-        coverage run -m pytest
+        coverage run -m pytest --maxfail=1 --disable-warnings -q
         coverage xml
 
     - name: Build documentation

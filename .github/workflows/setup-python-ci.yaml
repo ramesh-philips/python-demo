@@ -28,8 +28,8 @@ jobs:
         sudo apt-get install build-essential
     
     - name: List directory contents  # Add this step to verify the path
-      run: ls -la project
-      
+      run: ls -la projects
+
     - name: Install dependencies
       working-directory: projects/alarm_clock  # Set the working directory
       run: |

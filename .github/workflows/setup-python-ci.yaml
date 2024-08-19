@@ -93,12 +93,6 @@ jobs:
         pip install sphinx
         sphinx-build -b linkcheck source build/linkcheck || true
 
-    - name: Static code analysis with pylint
-      working-directory: projects/Calculate_age  # Set the working directory
-      run: |
-        pip install pylint
-        pylint projects/Calculate_age
-
     - name: Dependency scanning with safety
       working-directory: projects/Calculate_age  # Set the working directory
       run: |

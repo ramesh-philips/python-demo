@@ -1,16 +1,20 @@
 import unittest
-from unittest.mock import patch
-import winsound  # Import winsound here
-from alarm_clock import alarm_logic
-import pytest
+from unittest.mock import patch, Mock
 import sys
+
+# Conditionally import winsound only if on Windows
+if sys.platform == "win32":
+    import winsound
+else:
+    winsound = Mock()  # Mock winsound for non-Windows platforms
+
+from alarm_clock import alarm_logic
 
 class TestAlarmLogic(unittest.TestCase):
 
     @patch('winsound.PlaySound')
     @patch('time.sleep', return_value=None)  # Mock sleep to avoid delay during testing
     @patch('datetime.datetime')
-    @pytest.mark.skipif(sys.platform != "win32", reason="requires winsound module on Windows")
     def test_alarm_logic(self, mock_datetime, mock_sleep, mock_play_sound):
         # Set the mock current time
         mock_datetime.now.return_value.strftime.return_value = "00:00:00"
@@ -19,7 +23,10 @@ class TestAlarmLogic(unittest.TestCase):
         alarm_logic("00:00:00", mock_play_sound)
 
         # Check if the PlaySound function was called with the correct arguments
-        mock_play_sound.assert_called_with("sound.wav", winsound.SND_ASYNC)
+        if sys.platform == "win32":
+            mock_play_sound.assert_called_with("sound.wav", winsound.SND_ASYNC)
+        else:
+            mock_play_sound.assert_not_called()
 
 if __name__ == '__main__':
     unittest.main()

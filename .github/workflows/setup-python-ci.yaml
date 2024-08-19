@@ -28,58 +28,67 @@ jobs:
         sudo apt-get install build-essential
       
     - name: Install dependencies
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Lint with flake8
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install flake8
         flake8 . || true
 
     - name: Lint with black
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install black
         black --check . || true
 
     - name: Check types with mypy
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install mypy
         mypy . || true
 
     - name: Security check with bandit
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install bandit
         bandit -r . || true
 
     - name: Test with pytest
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install pytest
         pytest --maxfail=1 --disable-warnings -q || true
 
     - name: Generate coverage report
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install coverage
         coverage run -m pytest --maxfail=1 --disable-warnings -q
         coverage xml
 
     - name: Build documentation
+      working-directory: project/alarm_clock/docs  # Set the working directory
       run: |
         pip install sphinx
-        cd docs
         make html
 
     - name: Check documentation links
+      working-directory: project/alarm_clock/docs  # Set the working directory
       run: |
         pip install sphinx
-        cd docs
         make linkcheck || true
 
     - name: Static code analysis with pylint
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install pylint
         pylint projects
 
     - name: Dependency scanning with safety
+      working-directory: project/alarm_clock  # Set the working directory
       run: |
         pip install safety
         safety check || true

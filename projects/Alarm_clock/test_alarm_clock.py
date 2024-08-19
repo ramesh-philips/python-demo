@@ -2,12 +2,15 @@ import unittest
 from unittest.mock import patch
 import winsound  # Import winsound here
 from alarm_clock import alarm_logic
+import pytest
+import sys
 
 class TestAlarmLogic(unittest.TestCase):
 
     @patch('winsound.PlaySound')
     @patch('time.sleep', return_value=None)  # Mock sleep to avoid delay during testing
     @patch('datetime.datetime')
+    @pytest.mark.skipif(sys.platform != "win32", reason="requires winsound module on Windows")
     def test_alarm_logic(self, mock_datetime, mock_sleep, mock_play_sound):
         # Set the mock current time
         mock_datetime.now.return_value.strftime.return_value = "00:00:00"

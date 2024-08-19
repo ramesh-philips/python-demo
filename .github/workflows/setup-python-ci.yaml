@@ -73,7 +73,7 @@ jobs:
     - name: Static code analysis with pylint
       run: |
         pip install pylint
-        pylint your_project_directory
+        pylint projects
 
     - name: Dependency scanning with safety
       run: |

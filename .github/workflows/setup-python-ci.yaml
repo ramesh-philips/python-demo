@@ -75,18 +75,23 @@ jobs:
     - name: Ensure docs directory exists
       run: |
         mkdir -p projects/Calculate_age/docs
-
-    - name: Build documentation
-      working-directory: projects/Calculate_age/docs  # Set the working directory
+    
+    - name: Install Sphinx and dependencies
+      working-directory: projects/Calculate_age/docs
       run: |
         pip install sphinx
-        make html
+        pip install sphinx_rtd_theme  # Example: install a theme if needed
+      
+    - name: Build documentation with sphinx-build (alternative)
+      working-directory: projects/Calculate_age/docs
+      run: |
+        sphinx-build -b html source build/html
 
     - name: Check documentation links
       working-directory: projects/Calculate_age/docs  # Set the working directory
       run: |
         pip install sphinx
-        make linkcheck || true
+        sphinx-build -b linkcheck source build/linkcheck || true
 
     - name: Static code analysis with pylint
       working-directory: projects/Calculate_age  # Set the working directory

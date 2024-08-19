@@ -1,0 +1,197 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# env/venv virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# Environments in conda
+.env/
+.venv/
+*.env
+*.venv
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# pyenv
+.python-version
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS specific files
+.DS_Store
+
+# Thumbnails and other files from Gnome
+.thumbnail/
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Sphinx documentation
+docs/_build/
+
+# Flask specific files
+instance/
+.webassets-cache
+
+# Django specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.mo
+*.env
+*.DS_Store
+*.coverage
+__pycache__/
+db.sqlite3
+staticfiles/
+media/
+
+# Scrapy specific files
+.scrapy/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pyright static type checker
+.pyright/
+
+# Bandit security scanner
+bandit.yaml
+
+# IntelliJ IDEA files
+.idea/
+
+# Pycharm files
+.idea/
+*.iml
+
+# JetBrains IDEs
+.idea/
+*.iws
+*.ipr
+
+# Backup files
+*~
+
+# Code analysis data
+static_analysis_data.json
+
+# Local project files
+*.local
+
+# Poetry virtual environments
+.poetry/
+
+# VS Code specific files
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Coverage reports
+.coverage
+.coverage.*
+.cache
+
+# Temporary files created by the Python interpreter
+*.pyo
+*.pyd
+*.pyd.pyi
+
+# Temporary files for Jupyter notebooks
+.ipynb_checkpoints/
